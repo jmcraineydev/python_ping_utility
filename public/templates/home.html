@@ -9,11 +9,20 @@ content%}
       name="url"
       id="url"
       class="form-control"
-      placeholder="Enter URL: "
+      placeholder="Enter URL you want to track "
     />
   </div>
   <br />
   <button type="submit" class="btn btn-primary">Track URL</button>
 </form>
+<hr />
+<h3 align="center">The URLs you are tracking</h3>
+<ul class="list-group list-group-flush" id="notes">
+  {% if userUrls != None %} {% for url in userUrls%}
+  <li class="list-group-item">URL: {{url['url']}} status: {{url['status']}}</li>
+  {%endfor%}{% else %}
+  <li>You currently are not tracking any urls</li>
+  {% endif %}
+</ul>
 
 {%endblock%}

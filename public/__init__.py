@@ -10,6 +10,7 @@ load_dotenv()
 cluster = MongoClient(os.getenv("MONGO_DB_CONNECTION"))
 db = cluster["PingUtil"]
 userCollection = db["user"]
+trackedCollection = db["tracked"]
 
 
 def create_app():
