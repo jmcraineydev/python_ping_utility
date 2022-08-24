@@ -1,4 +1,19 @@
 {% extends "base.html" %} {%block title%}Ping Utility{%endblock%} {%block
 content%}
-<h1>This is the homepage</h1>
+<form method="post">
+  <h3 align="center">Add new URL to track</h3>
+  <div class="form-group">
+    <label for="url">URL</label>
+    <input
+      type="url"
+      name="url"
+      id="url"
+      class="form-control"
+      placeholder="Enter URL: "
+    />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Track URL</button>
+</form>
+
 {%endblock%}
