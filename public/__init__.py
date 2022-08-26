@@ -4,7 +4,6 @@ import os
 import pymongo
 from pymongo import MongoClient
 
-
 load_dotenv()
 
 cluster = MongoClient(os.getenv("MONGO_DB_CONNECTION"))

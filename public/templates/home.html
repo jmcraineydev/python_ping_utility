@@ -19,7 +19,10 @@ content%}
 <h3 align="center">The URLs you are tracking</h3>
 <ul class="list-group list-group-flush" id="notes">
   {% if userUrls != None %} {% for url in userUrls%}
-  <li class="list-group-item">URL: {{url['url']}} STATUS: {{url['status']}}</li>
+  <li class="list-group-item">
+    URL: {{url['url']}} STATUS: {{url['status']}}
+    <i class="fa-solid fa-cloud-question"></i>
+  </li>
   {%endfor%}{% else %}
   <li>You currently are not tracking any urls</li>
   {% endif %}
