@@ -8,9 +8,13 @@ from flask import (
     request,
 )
 
-from public.tracking import addUrlToTracking, getUserTrackedUrl
+from public.tracking import (
+    addUrlToTracking,
+    getUserTrackedUrl,
+    updateUserURLStatus,
+    updateAllURLStatus,
+)
 
-# from tracking.py import addUrlTracking
 
 views = Blueprint("views", __name__)
 
@@ -23,5 +27,6 @@ def home():
         url = request.form.get("url")
         addUrlToTracking(url)
     userUrls = getUserTrackedUrl()
-    print(session.get("user"))
+    updateUserURLStatus(userUrls)
+    userUrls = getUserTrackedUrl()
     return render_template("home.html", session=session, userUrls=userUrls)
