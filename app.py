@@ -1,14 +1,10 @@
-import requests
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
+import schedule
+import time
+from public.tracking import updateAllURLStatus
 
 
-def makeRequest():
-    res = requests.get(os.getenv("HOST"))
-    # response = json.loads(res.text)
-    return res
+schedule.every(30).seconds.do(updateAllURLStatus)
 
-
-print(makeRequest())
+while True:
+    schedule.run_pending()
+    time.sleep(1)
