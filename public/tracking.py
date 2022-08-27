@@ -43,12 +43,18 @@ def getUrlStatus(url):
     try:
         res = requests.get(url["url"], timeout=3)
         resData = res.status_code
+        print(res.status_code)
     except Timeout:
         print("URL request timed out - status changed to down")
-        resData = 404
+        resData = 400
+    except requests.exceptions.ConnectionError:
+        print("URL Connection Error status changed to down")
+        resData = 400
+    if resData >= 400:
+        return "❌"
+    elif resData >= 300:
+        return "🔀"
     if resData >= 200:
         return "✅"
-    elif resData >= 400:
-        return "❌"
     else:
         return "🤷‍♂️"
