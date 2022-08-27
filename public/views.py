@@ -7,16 +7,12 @@ from flask import (
     session,
     request,
 )
-import schedule
-import time
 
 from public.tracking import (
     addUrlToTracking,
     getUserTrackedUrl,
     updateUserURLStatus,
-    updateAllURLStatus,
 )
-
 
 views = Blueprint("views", __name__)
 
@@ -32,10 +28,3 @@ def home():
     updateUserURLStatus(userUrls)
     userUrls = getUserTrackedUrl()
     return render_template("home.html", session=session, userUrls=userUrls)
-
-
-# schedule.every(30).seconds.do(updateAllURLStatus)
-
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
