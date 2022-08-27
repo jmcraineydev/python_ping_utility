@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from . import userCollection, trackedCollection
 import datetime
 import requests
+from requests.exceptions import Timeout
 import re
 import json
 import asyncio
@@ -48,11 +49,15 @@ def updateAllURLStatus():
 
 
 def getUrlStatus(url):
-    res = requests.get(url["url"], timeout=3)
-    resData = res.status_code
+    try:
+        res = requests.get(url["url"], timeout=3)
+        resData = res.status_code
+    except Timeout:
+        print("URL request timed out - status changed to down")
+        resData = 404
     if resData >= 200:
         return "up"
-    elif res >= 400:
+    elif resData >= 400:
         return "down"
     else:
         return "uknown"
