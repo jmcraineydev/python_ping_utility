@@ -21,8 +21,8 @@ The URL Tracker is a simple application to track the status of URLs of apps you 
 2. Fork this repo and clone it to your local machine
 3. Setup .env file in your local environment containing the following information:
 
-   - `APP_SECRET_KEY` <A secret key (i.e. UUID) to config the instance of FLASK>
-   - `MONGO_DB_CONNECTION` <the connection string you obtained from Mongo that should include your username and password in the string>
+   - `APP_SECRET_KEY` - A secret key (i.e. UUID) to config the instance of FLASK
+   - `MONGO_DB_CONNECTION` - The connection string you obtained from Mongo that should include you username and password in the string
 
 4. Install the necessary packages: pymongo, werkzeug.security, etc
 
